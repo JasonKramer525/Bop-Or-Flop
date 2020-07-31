@@ -1,32 +1,62 @@
 <template>
-  <q-page>
-    <div class="row justify-center full-height full-width text-center">
-      <img
-        class="q-mt-md"
-        src="images/BopOrFlopInverse.png"
-        style="max-width: 150px; height: auto;"
-      />
-    </div>
-    <div class="row justify-center full-height full-width text-center">
-      <p
-        class="subtext text-h6"
-        style="color:white"
-      >Can you guess which song has more plays on Apple Music?</p>
-    </div>
+  <div class="overflow-hidden">
+    <q-resize-observer @resize="onResize" :debounce="0" />
 
-    <div class="row justify-center full-height full-width text-center q-mt-md">
-      <q-btn class="q-px-xl q-py-xs subtext" color="green" size="30px">PLAY</q-btn>
-    </div>
+    <q-splitter
+      class="fixed-center"
+      id="photos"
+      v-model="splitterModel"
+      :limits="[0, 100]"
+      :style="splitterStyle"
+      before-class="overflow-hidden"
+      after-class="overflow-hidden"
+    >
+      <template v-slot:before>
+        <img
+          transition-show="jump-down"
+          transition-hide="jump-up"
+          src="images/bruno.png"
+          :width="width"
+          class="absolute-top-left"
+        />
+      </template>
 
-    <q-footer class="flex bg-black justify-center">
-      <img src="images/greenbars.gif" style="height: 300px;" />
-    </q-footer>
-  </q-page>
+      <template v-slot:after>
+        <img
+          src="https://cdn.quasar.dev/img/parallax1-bw.jpg"
+          :width="width"
+          class="absolute-top-right"
+        />
+      </template>
+    </q-splitter>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "PageIndex"
+  data() {
+    return {
+      width: 400,
+      splitterModel: 50 // start at 50%
+    };
+  },
+
+  methods: {
+    // we are using QResizeObserver to keep
+    // this example mobile-friendly
+    onResize({ width }) {
+      this.width = width;
+    }
+  },
+
+  computed: {
+    splitterStyle() {
+      return {
+        height: Math.min(1000, 0.66 * this.width) + "px",
+        width: this.width + "px"
+      };
+    }
+  }
 };
 </script>
 
