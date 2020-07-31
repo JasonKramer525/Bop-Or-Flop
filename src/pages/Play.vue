@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-hidden">
+  <!---  <div class="overflow-hidden">
     <q-resize-observer @resize="onResize" :debounce="0" />
 
     <q-splitter
@@ -29,10 +29,47 @@
         />
       </template>
     </q-splitter>
+  </div> --->
+  <div>
+    <div class="row">
+      <div class="col-lg-6 col-sm-12" style="color:white">
+        <img src="images/cup.jpg" width="50%" class="absolute-top-right" />
+      </div>
+
+      <div class="col-lg-6 col-sm-12" style="color:white">
+        <img
+          transition-show="jump-down"
+          transition-hide="jump-up"
+          src="images/bruno.png"
+          width="50%"
+          class="absolute-top-left"
+        />
+      </div>
+    </div>
+
+    <q-avatar
+      class="absolute-center subtext"
+      size="100px"
+      font-size="52px"
+      color="green"
+      text-color="white"
+    >VS</q-avatar>
+
+    <q-footer class="bg-green" elevated>
+      <q-toolbar>
+        <h4 class="subtext">Score:</h4>
+        <q-space />
+        <q-icon class="q-pa-sm" style="font-size: 5rem; color: red" name="fas fa-heart" />
+        <q-icon class="q-pa-sm" style="font-size: 5rem; color: red" name="fas fa-heart" />
+        <q-icon class="q-pa-sm" style="font-size: 5rem; color: red" name="fas fa-heart" />
+      </q-toolbar>
+    </q-footer>
   </div>
 </template>
 
 <script>
+import { fasFont } from "@quasar/extras/fontawesome-v5";
+
 export default {
   data() {
     return {

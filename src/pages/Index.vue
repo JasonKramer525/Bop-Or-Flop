@@ -23,9 +23,9 @@
       >PLAY</q-btn>
     </div>
 
-    <q-footer class="flex bg-black justify-center">
+    <div class="flex bg-black justify-center">
       <img src="images/greenbars.gif" style="height: 300px;" />
-    </q-footer>
+    </div>
   </q-page>
 </template>
 
